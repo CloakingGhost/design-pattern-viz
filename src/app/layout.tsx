@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+console.log(process.env.NEXT_PUBLIC_DOMAIN);
 
-const baseUrl = new URL(process.env.NEXT_PUBLIC_DOMAIN);
+const domain = process.env.NEXT_PUBLIC_DOMAIN;
+const baseUrl = domain ? new URL(domain) : new URL('http://localhost:3000');
 
 /**
  * 메타데이터 설정
