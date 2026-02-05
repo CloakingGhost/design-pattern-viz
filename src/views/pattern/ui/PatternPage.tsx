@@ -1,10 +1,11 @@
 import {
   SingletonVisualizer,
   StrategyVisualizer,
+  AdapterVisualizer,
   PatternSidebar,
 } from "@/widgets";
 import { patternDataById } from "@/data";
-import { PATTERN_CATALOG, PATTERN_CATEGORY_LABELS } from "@/shared/constants";
+import { PATTERN_CATALOG } from "@/shared/constants";
 import type { PatternCategory } from "@/shared/types";
 import { BookOpen } from "lucide-react";
 import Link from "next/link";
@@ -20,6 +21,9 @@ const visualizerMap = {
   ),
   strategy: (data: (typeof patternDataById)["strategy"]) => (
     <StrategyVisualizer patternData={data} />
+  ),
+  adapter: (data: (typeof patternDataById)["adapter"]) => (
+    <AdapterVisualizer patternData={data} />
   ),
 };
 

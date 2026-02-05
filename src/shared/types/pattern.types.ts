@@ -71,10 +71,19 @@ export interface CodeStep {
 // ============================================
 
 /**
+ * 모든 애니메이션 상태의 베이스 인터페이스
+ * 각 패턴의 상태가 확장하는 기본 구조
+ */
+export interface BaseAnimationState {
+  /** 현재 상태를 설명하는 메시지 */
+  resultMessage: string;
+}
+
+/**
  * 싱글톤 패턴의 애니메이션 상태
  * Java의 Singleton 동작을 시뮬레이션
  */
-export interface SingletonAnimationState {
+export interface SingletonAnimationState extends BaseAnimationState {
   /** 인스턴스 존재 여부 (Java의 private static instance != null) */
   instanceExists: boolean;
   /** 현재 호출자 ID */
@@ -97,7 +106,7 @@ export interface SingletonAnimationState {
  * 전략 패턴의 애니메이션 상태
  * Java의 Strategy 동작을 시뮬레이션
  */
-export interface StrategyAnimationState {
+export interface StrategyAnimationState extends BaseAnimationState {
   /** 현재 선택된 전략 이름 */
   currentStrategy: string | null;
   /** 사용 가능한 전략 목록 */
@@ -106,12 +115,27 @@ export interface StrategyAnimationState {
   isExecuting: boolean;
   /** Context 객체 활성화 여부 */
   contextActive: boolean;
-  /** 실행 결과 메시지 */
-  resultMessage: string;
+}
+
+/**
+ * Adapter 패턴의 애니메이션 상태
+ * 호환되지 않는 인터페이스를 가진 객체들의 변환을 시뮬레이션
+ */
+export interface AdapterAnimationState extends BaseAnimationState {
+  /** 정사각형 못의 너비 - undefined: 미생성, number: 생성된 상태 */
+  squarePegWidth: number | undefined;
+  /** 둥근 못의 반지름 - undefined: 미생성, number: 생성/변환된 값 */
+  roundPegRadius: number | undefined;
+  /** 어댑터 활성화 여부 */
+  adapterActive: boolean;
+  /** 변환 중인지 */
+  isConverting: boolean;
+  /** 구멍에 맞는지 */
+  fits: boolean | null;
 }
 
 /** 모든 패턴의 애니메이션 상태를 포괄하는 유니온 타입 */
-export type AnimationState = SingletonAnimationState | StrategyAnimationState;
+export type AnimationState = SingletonAnimationState | StrategyAnimationState | AdapterAnimationState;
 
 // ============================================
 // 애니메이션 스텝 타입
@@ -153,6 +177,9 @@ export type SingletonPatternData = PatternData<SingletonAnimationState>;
 /** Strategy 패턴 데이터 타입 */
 export type StrategyPatternData = PatternData<StrategyAnimationState>;
 
+/** Adapter 패턴 데이터 타입 */
+export type AdapterPatternData = PatternData<AdapterAnimationState>;
+
 // ============================================
 // 플레이어 상태 타입
 // ============================================
@@ -173,8 +200,8 @@ export interface PlayerState {
 
 /** 지원되는 재생 속도 옵션 */
 export const PLAY_SPEEDS = {
-  SLOW: 3000, 
-  NORMAL: 2000, 
+  SLOW: 3000,
+  NORMAL: 2000,
   FAST: 1000,
   VERY_FAST: 500,
 } as const;

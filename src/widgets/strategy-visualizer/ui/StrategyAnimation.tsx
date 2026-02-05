@@ -302,7 +302,7 @@ export function StrategyAnimation({
         className="absolute bottom-4 left-4 right-4 p-3 bg-white/90 backdrop-blur rounded-lg border border-slate-200 shadow-sm"
         key={state.resultMessage}
       >
-        <p className="text-sm text-slate-700 font-medium text-center">
+        <p className="text-slate-700 font-medium text-center">
           {state.resultMessage}
         </p>
       </motion.div>

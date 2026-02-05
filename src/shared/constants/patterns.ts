@@ -59,7 +59,7 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       nameKo: "어댑터",
       category: "structural",
       icon: "🔌",
-      implemented: false,
+      implemented: true,
     },
     {
       id: "bridge",
