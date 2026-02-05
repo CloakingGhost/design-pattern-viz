@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -54,13 +55,15 @@ export const metadata: Metadata = {
     title: "Design Pattern Visualizer | 디자인 패턴 시각화 학습",
     description:
       "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
-    images: ["https://placehold.co/1200x630/png?text=Design+Pattern+Visualizer"],
+    images: [
+      "https://placehold.co/1200x630/png?text=Design+Pattern+Visualizer",
+    ],
   },
 };
 
 /**
  * 루트 레이아웃
- * 
+ *
  * [FSD 아키텍처]
  * app 폴더는 순수하게 라우팅만 담당합니다.
  * 실제 페이지 구성은 pages 레이어에서 처리합니다.
@@ -77,6 +80,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white text-slate-900`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
