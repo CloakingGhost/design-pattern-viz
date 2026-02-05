@@ -12,13 +12,50 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+  : new URL("https://design-pattern-viz.vercel.app");
+
 /**
  * 메타데이터 설정
  */
 export const metadata: Metadata = {
+  metadataBase: baseUrl,
   title: "Design Pattern Visualizer | 디자인 패턴 시각화 학습",
-  description: "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
-  keywords: ["디자인 패턴", "Design Pattern", "Singleton", "Strategy", "시각화", "학습"],
+  description:
+    "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
+  keywords: [
+    "디자인 패턴",
+    "Design Pattern",
+    "Singleton",
+    "Strategy",
+    "시각화",
+    "학습",
+  ],
+  openGraph: {
+    title: "Design Pattern Visualizer | 디자인 패턴 시각화 학습",
+    description:
+      "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
+    url: baseUrl,
+    siteName: "Design Pattern Visualizer",
+    locale: "ko_KR",
+    type: "website",
+    images: [
+      {
+        url: "https://placehold.co/1200x630/png?text=Design+Pattern+Visualizer",
+        width: 1200,
+        height: 630,
+        alt: "Design Pattern Visualizer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Design Pattern Visualizer | 디자인 패턴 시각화 학습",
+    description:
+      "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
+    images: ["https://placehold.co/1200x630/png?text=Design+Pattern+Visualizer"],
+  },
 };
 
 /**

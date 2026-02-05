@@ -26,10 +26,10 @@ import type { SingletonPatternData, SingletonAnimationState } from '@/shared/typ
  */
 const initialState: SingletonAnimationState = {
   instanceExists: false,      // private static Singleton instance = null
-  callerId: null,             // 아직 아무도 호출하지 않음
+  callerId: null,             
   isCreating: false,
   isReturning: false,
-  message: '시작하려면 재생 버튼을 클릭하세요',
+  resultMessage: '시작하려면 재생 버튼을 클릭하세요',
   callHistory: [],
 };
 
@@ -147,7 +147,7 @@ const animationSteps = [
       callerId: null,
       isCreating: false,
       isReturning: false,
-      message: '📦 Singleton 클래스 로드 - instance는 null입니다',
+      resultMessage: '📦 Singleton 클래스 로드 - instance는 null입니다',
       callHistory: [],
     } as SingletonAnimationState,
   },
@@ -158,7 +158,7 @@ const animationSteps = [
       callerId: 'Client-A',
       isCreating: false,
       isReturning: false,
-      message: '👤 Client-A이 getInstance()를 호출합니다',
+      resultMessage: '👤 Client-A이 getInstance()를 호출합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
       ],
@@ -171,7 +171,7 @@ const animationSteps = [
       callerId: 'Client-A',
       isCreating: false,
       isReturning: false,
-      message: '🔍 instance == null 체크 중...',
+      resultMessage: '🔍 instance == null 체크 중...',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
       ],
@@ -184,7 +184,7 @@ const animationSteps = [
       callerId: 'Client-A',
       isCreating: false,
       isReturning: false,
-      message: '✅ 조건 true: 인스턴스가 없으므로 생성이 필요합니다',
+      resultMessage: '✅ 조건 true: 인스턴스가 없으므로 생성이 필요합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
       ],
@@ -197,7 +197,7 @@ const animationSteps = [
       callerId: 'Client-A',
       isCreating: true,
       isReturning: false,
-      message: '🔨 new Singleton() - 인스턴스 생성 중!',
+      resultMessage: '🔨 new Singleton() - 인스턴스 생성 중!',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -211,7 +211,7 @@ const animationSteps = [
       callerId: 'Client-A',
       isCreating: false,
       isReturning: true,
-      message: '🎉 인스턴스 생성 완료! Client-A에게 반환합니다',
+      resultMessage: '🎉 인스턴스 생성 완료! Client-A에게 반환합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -226,7 +226,7 @@ const animationSteps = [
       callerId: 'Client-B',
       isCreating: false,
       isReturning: false,
-      message: '👤 Client-B가 getInstance()를 호출합니다',
+      resultMessage: '👤 Client-B가 getInstance()를 호출합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -242,7 +242,7 @@ const animationSteps = [
       callerId: 'Client-B',
       isCreating: false,
       isReturning: false,
-      message: '🔍 instance == null 체크 중...',
+      resultMessage: '🔍 instance == null 체크 중...',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -258,7 +258,7 @@ const animationSteps = [
       callerId: 'Client-B',
       isCreating: false,
       isReturning: false,
-      message: '❌ 조건 false: 이미 인스턴스가 존재합니다!',
+      resultMessage: '❌ 조건 false: 이미 인스턴스가 존재합니다!',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -274,7 +274,7 @@ const animationSteps = [
       callerId: 'Client-B',
       isCreating: false,
       isReturning: true,
-      message: '🔄 기존 인스턴스를 Client-B에게 반환합니다',
+      resultMessage: '🔄 기존 인스턴스를 Client-B에게 반환합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },
@@ -291,7 +291,7 @@ const animationSteps = [
       callerId: null,
       isCreating: false,
       isReturning: false,
-      message: '✨ obj1 == obj2 → true! 두 클라이언트가 같은 인스턴스를 공유합니다',
+      resultMessage: '✨ obj1 == obj2 → true! 두 클라이언트가 같은 인스턴스를 공유합니다',
       callHistory: [
         { callerId: 'Client-A', action: 'check' as const, timestamp: 1 },
         { callerId: 'Client-A', action: 'create' as const, timestamp: 2 },

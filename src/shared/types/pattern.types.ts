@@ -92,8 +92,6 @@ export interface SingletonAnimationState extends BaseAnimationState {
   isCreating: boolean;
   /** 인스턴스 반환 중인지 */
   isReturning: boolean;
-  /** 현재 상태 메시지 */
-  message: string;
   /** 호출 히스토리 */
   callHistory: Array<{
     callerId: string;

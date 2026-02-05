@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import type { AdapterAnimationState } from "@/data/patterns/adapter.data";
+import type { AdapterAnimationState } from "@/shared/types";
 
 /**
  * AdapterAnimation 컴포넌트 Props
@@ -121,7 +121,7 @@ export function AdapterAnimation({
           <div className="flex-1 flex flex-col items-center justify-center gap-6">
             {/* 호환되는 객체 테스트 (Step 5-6) */}
             <AnimatePresence>
-              {state.roundPegRadius !== null &&
+              {typeof state.roundPegRadius === "number" &&
                 state.roundPegRadius > 0 &&
                 !state.adapterActive && (
                   <motion.div

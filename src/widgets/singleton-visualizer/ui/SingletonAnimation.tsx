@@ -128,10 +128,10 @@ export function SingletonAnimation({
       {/* 상태 메시지 */}
       <motion.div
         className="absolute bottom-4 left-4 right-4 p-3 bg-white/90 backdrop-blur rounded-lg border border-slate-200 shadow-sm"
-        key={state.message}
+        key={state.resultMessage}
       >
         <p className="text-slate-700 font-medium text-center">
-          {state.message}
+          {state.resultMessage}
         </p>
       </motion.div>
 
