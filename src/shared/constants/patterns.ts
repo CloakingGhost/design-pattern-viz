@@ -204,6 +204,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
 
 export const DEFAULT_PATTERN_BY_CATEGORY: Record<PatternCategory, string> = {
   creational: "singleton",
-  structural: "composite",
+  structural: "adapter",
   behavioral: "strategy",
 };
