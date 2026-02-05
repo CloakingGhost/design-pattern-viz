@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { PATTERN_CATALOG } from "@/shared/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.DOMAIN;
+  const baseUrl = process.env.NEXT_PUBLIC_DOMAIN;
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {

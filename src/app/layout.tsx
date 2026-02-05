@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const baseUrl = new URL(process.env.DOMAIN);
+const baseUrl = new URL(process.env.NEXT_PUBLIC_DOMAIN);
 
 /**
  * 메타데이터 설정
