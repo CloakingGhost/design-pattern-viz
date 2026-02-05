@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
+/**
+ * 라이트 모드 전용 테마 설정
+ * 다크 모드 비활성화
+ */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1e293b;
 }
 
 @theme inline {
@@ -12,15 +16,37 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* 다크 모드 무시 - 항상 라이트 모드 유지 */
+/* @media (prefers-color-scheme: dark) 제거됨 */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* 스크롤바 스타일링 (라이트 모드) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* 선택 영역 스타일 */
+::selection {
+  background: #dbeafe;
+  color: #1e40af;
 }
