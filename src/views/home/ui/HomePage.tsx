@@ -1,12 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Navigation, Footer } from "@/widgets";
+import { Header, Footer } from "@/widgets";
 import {
   DEFAULT_PATTERN_BY_CATEGORY,
   PATTERN_CATEGORY_LABELS,
 } from "@/shared/constants";
-import { BookOpen } from "lucide-react";
 
 /**
  * HomePage 컴포넌트
@@ -20,29 +19,7 @@ export function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-linear-to-br from-slate-50 via-white to-blue-50">
       {/* 헤더 */}
-      <header className="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            {/* 로고 */}
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-linear-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center">
-                <BookOpen className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-slate-800">
-                  Design Pattern Visualizer
-                </h1>
-                <p className="text-xs text-slate-500">
-                  디자인 패턴을 시각적으로 이해하세요
-                </p>
-              </div>
-            </div>
-
-            {/* 네비게이션 */}
-            <Navigation />
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* 메인 컨텐츠 */}
       <main className="w-full flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

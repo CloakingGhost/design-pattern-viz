@@ -97,11 +97,7 @@ export function StrategyAnimation({
               Concrete Strategies
             </h3>
             {state.availableStrategies.map((strategy, index) => {
-              const style = strategyStyles[strategy] || {
-                icon: "📦",
-                color: "text-gray-600",
-                bgColor: "bg-gray-500",
-              };
+              const style = strategyStyles[strategy];
               const isActive = state.currentStrategy === strategy;
 
               return (
@@ -123,14 +119,16 @@ export function StrategyAnimation({
                     <span className="text-3xl w-10 text-center me-2">
                       {style.icon}
                     </span>
-                    <div className="flex-1">
+                    <div className="text-sm flex-1">
                       <h4
-                        className={`text-sm font-bold ${isActive ? "text-white" : style.color}`}
+                        className={`font-bold ${isActive ? "text-white" : style.color}`}
                       >
                         {strategy}
                       </h4>
                       <code
-                        className={`text-sm ${isActive ? "text-white/80" : "text-slate-500"}`}
+                        className={
+                          isActive ? "text-white/80" : "text-slate-500"
+                        }
                       >
                         + pay(amount)
                       </code>

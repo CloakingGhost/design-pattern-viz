@@ -9,3 +9,5 @@ export { PatternVisualizerLayout } from "./pattern-visualizer-layout";
 export { Navigation, navTabs } from "./navigation";
 export { PatternSidebar } from "./pattern-sidebar";
 export { Footer } from "./footer";
+export { Header } from "./header";
+export { Logo } from "./logo";
