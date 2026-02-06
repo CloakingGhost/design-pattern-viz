@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Navigation } from "@/widgets";
-import { DEFAULT_PATTERN_BY_CATEGORY, PATTERN_CATEGORY_LABELS } from "@/shared/constants";
+import { Navigation, Footer } from "@/widgets";
+import {
+  DEFAULT_PATTERN_BY_CATEGORY,
+  PATTERN_CATEGORY_LABELS,
+} from "@/shared/constants";
 import { BookOpen } from "lucide-react";
 
 /**
@@ -13,6 +16,7 @@ import { BookOpen } from "lucide-react";
  * 비즈니스 로직 없이 순수하게 레이아웃과 위젯 배치만 담당합니다.
  */
 export function HomePage() {
+  const categories = ["creational", "structural", "behavioral"] as const;
   return (
     <div className="min-h-screen flex flex-col bg-linear-to-br from-slate-50 via-white to-blue-50">
       {/* 헤더 */}
@@ -47,13 +51,8 @@ export function HomePage() {
             디자인 패턴을 카테고리별로 탐색하세요
           </h2>
 
-
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {([
-              "creational",
-              "structural",
-              "behavioral",
-            ] as const).map((category) => (
+            {categories.map((category) => (
               <Link
                 key={category}
                 href={`/${category}/${DEFAULT_PATTERN_BY_CATEGORY[category]}`}
@@ -62,7 +61,6 @@ export function HomePage() {
                 <div className="text-center text-sm font-semibold text-blue-600">
                   {PATTERN_CATEGORY_LABELS[category]}
                 </div>
-
               </Link>
             ))}
           </div>
@@ -70,19 +68,7 @@ export function HomePage() {
       </main>
 
       {/* 푸터 */}
-      <footer className="bg-white border-t border-slate-200 mt-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="text-center text-sm text-slate-500">
-            <p>
-              🎓 디자인 패턴 시각화 학습 서비스 | Built with Next.js +
-              TypeScript
-            </p>
-            <p className="mt-1">
-              Java 코드의 동작을 TypeScript로 모킹하여 시각화합니다
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

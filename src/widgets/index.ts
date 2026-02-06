@@ -4,3 +4,4 @@ export { StrategyVisualizer, StrategyAnimation } from './strategy-visualizer';
 export { AdapterVisualizer, AdapterAnimation } from './adapter-visualizer';
 export { Navigation, navTabs } from './navigation';
 export { PatternSidebar } from './pattern-sidebar';
+export {Footer} from './footer'

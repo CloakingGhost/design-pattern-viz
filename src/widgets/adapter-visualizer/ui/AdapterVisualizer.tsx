@@ -55,26 +55,19 @@ export function AdapterVisualizer({
         {/* 컨텐츠 영역 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 divide-x divide-slate-200">
           {/* 왼쪽: 애니메이션 뷰 */}
-          <div className="p-8 flex flex-col">
-            {/* 제목 + 컨트롤 */}
-            <div className="flex items-center justify-between py-3 border-b border-slate-200 mb-6">
-              <h3 className="text-xl font-semibold text-slate-900">
-                시각화
-              </h3>
-              <AnimationControls visualizer={visualizer} />
-            </div>
-            <div className="flex-1 mb-6">
-              <AdapterAnimation state={animationState} />
-            </div>
+          <div className="flex flex-col gap-4 p-4">
+            {/* 컨트롤 */}
+            <AnimationControls visualizer={visualizer} />
+            <AdapterAnimation state={animationState} />
           </div>
 
           {/* 오른쪽: 코드 뷰 */}
-          <div className="p-8">
-            <div className="mb-3 flex items-center justify-between py-3">
+          <div className="p-4">
+            <div className="mb-2 flex items-center justify-between py-2">
               <h3 className="text-xl font-semibold text-slate-900">
                 Java 코드
               </h3>
-              <p className="text-base text-slate-600">
+              <p className="text-slate-500">
                 하이라이트된 라인이 현재 실행 중인 코드입니다
               </p>
             </div>
