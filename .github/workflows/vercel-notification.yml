@@ -17,5 +17,5 @@ jobs:
           description: |
             **프로젝트**: ${{ github.event.repository.name }}
             **결과**: ${{ github.event.deployment_status.state == 'success' && '✅ 성공' || '❌ 실패' }}
-            **링크**: [배포 사이트 확인](${{ github.event.deployment_status.target_url }})
+            **링크**: [배포 사이트 확인](${{ secrets.NEXT_PUBLIC_DOMAIN }})
           color: ${{ github.event.deployment_status.state == 'success' && '0x00FF00' || '0xFF0000' }}

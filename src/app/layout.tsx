@@ -65,7 +65,6 @@ export const metadata: Metadata = {
  *
  * [FSD 아키텍처]
  * app 폴더는 순수하게 라우팅만 담당합니다.
- * 실제 페이지 구성은 pages 레이어에서 처리합니다.
  */
 export default function RootLayout({
   children,
