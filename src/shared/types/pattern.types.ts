@@ -133,7 +133,10 @@ export interface AdapterAnimationState extends BaseAnimationState {
 }
 
 /** 모든 패턴의 애니메이션 상태를 포괄하는 유니온 타입 */
-export type AnimationState = SingletonAnimationState | StrategyAnimationState | AdapterAnimationState;
+export type AnimationState =
+  | SingletonAnimationState
+  | StrategyAnimationState
+  | AdapterAnimationState;
 
 // ============================================
 // 애니메이션 스텝 타입

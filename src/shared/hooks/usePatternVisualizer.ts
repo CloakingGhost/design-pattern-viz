@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useVisualizerStore } from "@/shared/store";
-import type { PatternData } from "@/shared/types";
+import type { AnimationState, PatternData } from "@/shared/types";
 
 /**
  * usePatternVisualizer 커스텀 훅
@@ -15,7 +15,9 @@ import type { PatternData } from "@/shared/types";
  * setInterval을 통해 일정 간격으로 nextStep()을 호출하면,
  * 마치 Java 코드가 한 줄씩 실행되는 것처럼 시각화됩니다.
  */
-export function usePatternVisualizer(patternData?: PatternData) {
+export function usePatternVisualizer<
+  T extends AnimationState = AnimationState,
+>(patternData?: PatternData<T>): UsePatternVisualizerReturn<T> {
   // 스토어에서 상태와 액션 가져오기
   const {
     patternData: storePatternData,
@@ -116,7 +118,7 @@ export function usePatternVisualizer(patternData?: PatternData) {
     isPlaying: player.isPlaying,
     playSpeed: player.playSpeed,
     selectedPatternId: player.selectedPatternId,
-    animationState: currentAnimationState,
+    animationState: currentAnimationState as T | null,
     highlightLines: codeStepInfo?.highlightLines ?? [],
     progress,
     canGoPrev,
@@ -134,6 +136,29 @@ export function usePatternVisualizer(patternData?: PatternData) {
   };
 }
 
-export type UsePatternVisualizerReturn = ReturnType<
-  typeof usePatternVisualizer
->;
+export type UsePatternVisualizerReturn<
+  T extends AnimationState = AnimationState,
+> = {
+  // 상태
+  patternData: PatternData | null;
+  currentStep: number;
+  totalSteps: number;
+  isPlaying: boolean;
+  playSpeed: number;
+  selectedPatternId: string | null;
+  animationState: T | null;
+  highlightLines: number[];
+  progress: number;
+  canGoPrev: boolean;
+  canGoNext: boolean;
+
+  // 액션
+  nextStep: () => void;
+  prevStep: () => void;
+  goToStep: (step: number) => void;
+  play: () => void;
+  pause: () => void;
+  togglePlay: () => void;
+  setPlaySpeed: (speed: number) => void;
+  reset: () => void;
+};
