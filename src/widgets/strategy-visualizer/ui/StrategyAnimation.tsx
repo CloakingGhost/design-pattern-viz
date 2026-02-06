@@ -64,7 +64,7 @@ export function StrategyAnimation({
 
   return (
     <div
-      className={`relative h-175 bg-linear-to-br from-slate-50 to-blue-50 rounded-xl border border-slate-200 overflow-hidden ${className}`}
+      className={`relative h-170 bg-linear-to-br from-slate-50 to-blue-50 rounded-xl border border-slate-200 overflow-hidden ${className}`}
     >
       {/* 메인 컨텐츠 */}
       <div className="relative z-10 h-full p-8">
@@ -75,21 +75,16 @@ export function StrategyAnimation({
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                <span className="text-xl">📋</span>
-              </div>
-              <div>
-                <h3 className="font-bold text-blue-900">
-                  &laquo; interface &raquo;
-                </h3>
-                <h4 className="text-base font-semibold text-blue-700">
-                  PaymentStrategy
-                </h4>
-                <code className="text-xs text-slate-600">
-                  + pay(amount): void
-                </code>
-              </div>
+            <div className="text-center">
+              <h3 className="font-bold text-blue-900">
+                &laquo; interface &raquo;
+              </h3>
+              <h4 className="text-base font-semibold text-blue-700">
+                PaymentStrategy
+              </h4>
+              <code className="text-sm text-slate-600">
+                + pay(amount): void
+              </code>
             </div>
           </motion.div>
         </div>
@@ -125,7 +120,9 @@ export function StrategyAnimation({
                   transition={{ delay: index * 0.1 }}
                 >
                   <div className="flex items-center gap-2">
-                    <span className="text-2xl">{style.icon}</span>
+                    <span className="text-3xl w-10 text-center me-2">
+                      {style.icon}
+                    </span>
                     <div className="flex-1">
                       <h4
                         className={`text-sm font-bold ${isActive ? "text-white" : style.color}`}
@@ -177,7 +174,7 @@ export function StrategyAnimation({
           <div className="flex justify-center">
             <motion.div
               className={`
-                relative w-48 h-48 rounded-2xl flex flex-col items-center justify-center
+                relative w-60 h-48 rounded-2xl flex flex-col items-center justify-center
                 border-4 shadow-2xl transition-all duration-500
                 ${
                   state.contextActive
@@ -210,7 +207,7 @@ export function StrategyAnimation({
               <h5 className="text-xs font-semibold text-indigo-600">
                 ShoppingCart
               </h5>
-              <div className="mt-2 text-xs text-slate-500 text-center">
+              <div className="mt-2 text-sm text-slate-500 text-center">
                 <code>- strategy: PaymentStrategy</code>
                 <br />
                 <code>+ setStrategy(s)</code>
@@ -221,11 +218,11 @@ export function StrategyAnimation({
               {/* 현재 전략 표시 */}
               {state.currentStrategy && (
                 <motion.div
-                  className="absolute -bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-500 text-white text-xs font-bold rounded-full whitespace-nowrap shadow-lg"
+                  className="absolute -bottom-5 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-500 text-white text-sm font-bold rounded-full whitespace-nowrap"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  {strategyStyles[state.currentStrategy]?.icon} Using:{" "}
+                  {strategyStyles[state.currentStrategy]?.icon} Using:&nbsp;
                   {state.currentStrategy.replace("Payment", "")}
                 </motion.div>
               )}
@@ -234,67 +231,50 @@ export function StrategyAnimation({
               <AnimatePresence>
                 {state.isExecuting && (
                   <>
-                    <motion.div
-                      className="absolute -inset-2 border-4 border-green-400 rounded-2xl"
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{
-                        opacity: [0.3, 0.7, 0.3],
-                        scale: [1, 1.05, 1],
-                      }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.8, repeat: Infinity }}
-                    />
-
                     {/* 결과로 향하는 화살표 */}
                     <motion.div
-                      className="absolute -bottom-16 left-1/2 -translate-x-1/2"
+                      className="absolute -bottom-18 left-1/2 -translate-x-1/2"
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
-                      <motion.div
-                        animate={{ y: [0, 5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        <div className="text-2xl">⬇️</div>
-                      </motion.div>
+                      <div className="text-3xl">⬇️</div>
                     </motion.div>
                   </>
+                )}
+              </AnimatePresence>
+
+              {/* 실행 결과 (Context 중앙 기준) */}
+              <AnimatePresence>
+                {state.isExecuting && (
+                  <motion.div
+                    className="absolute -bottom-42 left-1/2 -translate-x-1/2"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                  >
+                    <div className="bg-linear-to-r from-green-400 to-emerald-500 rounded-xl px-6 py-4 shadow-2xl border-2 border-green-300">
+                      <div className="flex items-center">
+                        <motion.span
+                          className="text-3xl"
+                          animate={{
+                            rotate: [0, 10, -10, 0],
+                            scale: [1, 1.1, 1],
+                          }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                        >
+                          💰
+                        </motion.span>
+                        <div className="text-white w-25">
+                          <h4 className="text-sm font-bold">결제 처리 중...</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           </div>
         </div>
-
-        {/* 4. 실행 결과 (하단 중앙) */}
-        <AnimatePresence>
-          {state.isExecuting && (
-            <motion.div
-              className="flex justify-end"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-            >
-              <div className="bg-linear-to-r from-green-400 to-emerald-500 rounded-xl p-6 shadow-2xl border-2 border-green-300">
-                <div className="flex items-center gap-4">
-                  <motion.span
-                    className="text-5xl"
-                    animate={{
-                      rotate: [0, 10, -10, 0],
-                      scale: [1, 1.1, 1],
-                    }}
-                    transition={{ duration: 1, repeat: Infinity }}
-                  >
-                    💰
-                  </motion.span>
-                  <div className="text-white">
-                    <h4 className="text-sm font-bold">결제 처리 중...</h4>
-                    <p className="text-xs opacity-90">전략 실행 결과</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
 
       {/* 상태 메시지 */}
