@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { DEFAULT_PATTERN_BY_CATEGORY } from "@/shared/constants";
 import { cn } from "@/shared/lib";
 
 /**
@@ -12,19 +12,19 @@ const navTabs = [
   {
     id: "creational",
     label: "생성 패턴",
-    href: "/creational/singleton",
+
     description: "객체 생성 메커니즘",
   },
   {
     id: "structural",
     label: "구조 패턴",
-    href: "/structural/composite",
+
     description: "클래스/객체 구성",
   },
   {
     id: "behavioral",
     label: "행위 패턴",
-    href: "/behavioral/strategy",
+
     description: "객체 간 상호작용",
   },
 ];
@@ -44,31 +44,16 @@ interface NavigationProps {
  * 홈, 생성 패턴, 구조 패턴, 행위 패턴 탭을 제공합니다.
  */
 export function Navigation({ className }: NavigationProps) {
-  const pathname = usePathname();
-
-  // 현재 활성화된 탭 확인
-  const isActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(href);
-  };
-
   return (
     <nav className={cn("flex items-center gap-1", className)}>
       {navTabs.map((tab) => {
-        const active = isActive(tab.href);
+        const tapHref = `${tab.id / DEFAULT_PATTERN_BY_CATEGORY[tab.id]}`;
 
         return (
           <Link
             key={tab.id}
-            href={tab.href}
-            className={cn(
-              "flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200",
-              active
-                ? "bg-blue-100 text-blue-700"
-                : "text-slate-800 hover:bg-slate-100 hover:text-black",
-            )}
+            href={tapHref}
+            className="flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200 text-slate-800 hover:bg-slate-100 hover:text-black"
           >
             <span className="hidden sm:inline">{tab.label}</span>
           </Link>
@@ -77,8 +62,3 @@ export function Navigation({ className }: NavigationProps) {
     </nav>
   );
 }
-
-/**
- * 네비게이션 탭 내보내기 (다른 곳에서 사용 가능)
- */
-export { navTabs };

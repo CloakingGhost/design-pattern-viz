@@ -55,8 +55,11 @@ export function PatternVisualizerLayout<
           {/* 왼쪽: 애니메이션 뷰 */}
           <div className="flex flex-col gap-4 p-4">
             {/* 컨트롤 */}
-            <AnimationControls visualizer={visualizer} />
             {animation}
+            <AnimationControls
+              visualizer={visualizer}
+              className="items-center justify-end"
+            />
           </div>
 
           {/* 오른쪽: 코드 뷰 */}

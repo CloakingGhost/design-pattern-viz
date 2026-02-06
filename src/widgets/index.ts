@@ -6,7 +6,7 @@ export {
 export { StrategyVisualizer, StrategyAnimation } from "./strategy-visualizer";
 export { AdapterVisualizer, AdapterAnimation } from "./adapter-visualizer";
 export { PatternVisualizerLayout } from "./pattern-visualizer-layout";
-export { Navigation, navTabs } from "./navigation";
+export { Navigation } from "./navigation";
 export { PatternSidebar } from "./pattern-sidebar";
 export { Footer } from "./footer";
 export { Header } from "./header";

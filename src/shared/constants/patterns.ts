@@ -5,7 +5,6 @@ export type PatternNavItem = {
   name: string;
   nameKo: string;
   category: PatternCategory;
-  icon: string;
   implemented: boolean;
 };
 
@@ -16,7 +15,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Singleton",
       nameKo: "싱글톤",
       category: "creational",
-      icon: "♾️",
       implemented: true,
     },
     {
@@ -24,7 +22,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Factory Method",
       nameKo: "팩토리 메서드",
       category: "creational",
-      icon: "🏭",
       implemented: false,
     },
     {
@@ -32,7 +29,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Abstract Factory",
       nameKo: "추상 팩토리",
       category: "creational",
-      icon: "🧰",
       implemented: false,
     },
     {
@@ -40,7 +36,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Builder",
       nameKo: "빌더",
       category: "creational",
-      icon: "🧱",
       implemented: false,
     },
     {
@@ -48,7 +43,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Prototype",
       nameKo: "프로토타입",
       category: "creational",
-      icon: "🧬",
       implemented: false,
     },
   ],
@@ -58,7 +52,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Adapter",
       nameKo: "어댑터",
       category: "structural",
-      icon: "🔌",
       implemented: true,
     },
     {
@@ -66,7 +59,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Bridge",
       nameKo: "브리지",
       category: "structural",
-      icon: "🌉",
       implemented: false,
     },
     {
@@ -74,7 +66,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Composite",
       nameKo: "컴포지트",
       category: "structural",
-      icon: "🧩",
       implemented: false,
     },
     {
@@ -82,7 +73,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Decorator",
       nameKo: "데코레이터",
       category: "structural",
-      icon: "🎀",
       implemented: false,
     },
     {
@@ -90,7 +80,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Facade",
       nameKo: "퍼사드",
       category: "structural",
-      icon: "🏛️",
       implemented: false,
     },
     {
@@ -98,7 +87,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Flyweight",
       nameKo: "플라이웨이트",
       category: "structural",
-      icon: "🪶",
       implemented: false,
     },
     {
@@ -106,7 +94,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Proxy",
       nameKo: "프록시",
       category: "structural",
-      icon: "🪞",
       implemented: false,
     },
   ],
@@ -116,7 +103,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Strategy",
       nameKo: "전략",
       category: "behavioral",
-      icon: "🧠",
       implemented: true,
     },
     {
@@ -124,7 +110,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Observer",
       nameKo: "옵저버",
       category: "behavioral",
-      icon: "👀",
       implemented: false,
     },
     {
@@ -132,7 +117,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Command",
       nameKo: "커맨드",
       category: "behavioral",
-      icon: "⌨️",
       implemented: false,
     },
     {
@@ -140,7 +124,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "State",
       nameKo: "상태",
       category: "behavioral",
-      icon: "🔄",
       implemented: false,
     },
     {
@@ -148,7 +131,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Template Method",
       nameKo: "템플릿 메서드",
       category: "behavioral",
-      icon: "📐",
       implemented: false,
     },
     {
@@ -156,7 +138,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Chain of Responsibility",
       nameKo: "책임 연쇄",
       category: "behavioral",
-      icon: "⛓️",
       implemented: false,
     },
     {
@@ -164,7 +145,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Mediator",
       nameKo: "중재자",
       category: "behavioral",
-      icon: "🤝",
       implemented: false,
     },
     {
@@ -172,7 +152,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Memento",
       nameKo: "메멘토",
       category: "behavioral",
-      icon: "💾",
       implemented: false,
     },
     {
@@ -180,7 +159,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Interpreter",
       nameKo: "인터프리터",
       category: "behavioral",
-      icon: "🗣️",
       implemented: false,
     },
     {
@@ -188,7 +166,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Iterator",
       nameKo: "반복자",
       category: "behavioral",
-      icon: "🔁",
       implemented: false,
     },
     {
@@ -196,7 +173,6 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Visitor",
       nameKo: "방문자",
       category: "behavioral",
-      icon: "🧳",
       implemented: false,
     },
   ],

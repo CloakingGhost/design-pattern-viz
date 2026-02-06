@@ -47,9 +47,9 @@ export function AnimationControls<T extends AnimationState = AnimationState>({
   } = visualizer;
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
+    <div className={cn("flex", className)}>
       {/* 컨트롤 버튼 그룹 */}
-      <div className="flex items-center gap-1">
+      <div className="flex items-center justify-center">
         {/* 리셋 버튼 */}
         <Button variant="ghost" size="sm" onClick={reset} title="처음으로">
           <RotateCcw className="w-6 h-6" />
@@ -93,12 +93,11 @@ export function AnimationControls<T extends AnimationState = AnimationState>({
       </div>
 
       {/* 속도 조절 */}
-      <div className="flex items-center gap-1 ml-2 pl-2 border-l border-slate-200">
+      <div className="flex items-center justify-center ml-2 pl-2 border-l border-slate-200">
         {PLAY_SPEED_OPTIONS.map((option) => (
           <Button
             key={option.value}
             variant="ghost"
-            size="sm"
             onClick={() => setPlaySpeed(option.value)}
             title={`재생 속도: ${option.label}`}
             className={cn(

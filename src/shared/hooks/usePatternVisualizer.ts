@@ -15,9 +15,9 @@ import type { AnimationState, PatternData } from "@/shared/types";
  * setInterval을 통해 일정 간격으로 nextStep()을 호출하면,
  * 마치 Java 코드가 한 줄씩 실행되는 것처럼 시각화됩니다.
  */
-export function usePatternVisualizer<
-  T extends AnimationState = AnimationState,
->(patternData?: PatternData<T>): UsePatternVisualizerReturn<T> {
+export function usePatternVisualizer<T extends AnimationState = AnimationState>(
+  patternData?: PatternData<T>,
+): UsePatternVisualizerReturn<T> {
   // 스토어에서 상태와 액션 가져오기
   const {
     patternData: storePatternData,
@@ -46,8 +46,6 @@ export function usePatternVisualizer<
    */
   useEffect(() => {
     const currentPatternId = patternData?.metadata?.id;
-    console.log("currentPatternId", currentPatternId);
-    console.log("previousPatternIdRef", previousPatternIdRef);
 
     if (!currentPatternId || !patternData) return;
 

@@ -83,8 +83,6 @@ export const useVisualizerStore = create<VisualizerStore>()(
        * 새로운 패턴을 선택했을 때 호출
        */
       loadPattern: (pattern) => {
-        console.log("pattern:", pattern);
-
         set(
           {
             patternData: pattern,
