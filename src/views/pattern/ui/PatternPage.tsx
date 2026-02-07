@@ -38,7 +38,9 @@ export function PatternPage({ category, patternId }: PatternPageProps) {
         <main className="flex-1 overflow-y-auto bg-linear-to-br from-slate-50 via-white to-blue-50">
           <div className="w-full mx-auto">
             {/* 선택된 패턴 */}
-            {isImplemented && <PatternPageClient patternData={patternData} />}
+            {isImplemented && patternData && (
+              <PatternPageClient patternData={patternData} />
+            )}
 
             {!isImplemented && (
               <div className="bg-white border border-slate-200 shadow-sm p-10 text-center">

@@ -30,7 +30,6 @@ export function PatternPageClient({
 }: PatternPageClientProps) {
   const visualizer = usePatternVisualizer(patternData);
 
-  // Update Store after render
   if (visualizer.selectedPatternId !== patternData.metadata.id) {
     return (
       <div className="w-full px-10 py-16 text-center text-slate-500">
@@ -43,13 +42,16 @@ export function PatternPageClient({
     patternData.metadata.id as keyof typeof animationMap
   ] as AnimationComponent | undefined;
 
+  if (!Animation) {
+    return null;
+  }
+
   return (
-    Animation && (
-      <PatternVisualizerLayout
-        className={className}
-        visualizer={visualizer}
-        animation={<Animation state={patternData.initialState} />}
-      />
-    )
+    <PatternVisualizerLayout
+      className={className}
+      patternData={patternData}
+      visualizer={visualizer}
+      animation={<Animation state={visualizer.animationState} />}
+    />
   );
 }
