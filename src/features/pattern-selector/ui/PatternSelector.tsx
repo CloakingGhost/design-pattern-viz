@@ -50,7 +50,6 @@ export function PatternSelector({
                 key={pattern.id}
                 className={`${baseClass} bg-slate-50 text-slate-400 border-slate-200 cursor-not-allowed`}
               >
-                <span>{pattern.icon}</span>
                 <span>{pattern.nameKo}</span>
                 <span className="text-xs text-slate-400">준비 중</span>
               </span>
@@ -70,7 +69,6 @@ export function PatternSelector({
                 }
               `}
             >
-              <span>{pattern.icon}</span>
               <span>{pattern.nameKo}</span>
             </Link>
           );
