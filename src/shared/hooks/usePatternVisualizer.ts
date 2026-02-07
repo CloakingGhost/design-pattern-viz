@@ -22,6 +22,7 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
   const {
     patternData: storePatternData,
     player,
+    currentAnimationState,
     loadPattern,
     nextStep,
     prevStep,
@@ -108,6 +109,7 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
     isPlaying: player.isPlaying,
     playSpeed: player.playSpeed,
     selectedPatternId: player.selectedPatternId,
+    animationState: currentAnimationState as T | null,
     highlightLines: codeStepInfo?.highlightLines ?? [],
     progress,
     canGoPrev,

@@ -43,14 +43,13 @@ export function PatternPageClient({
     patternData.metadata.id as keyof typeof animationMap
   ] as AnimationComponent | undefined;
 
-  if (!Animation) return null;
-
   return (
-    <PatternVisualizerLayout
-      className={className}
-      patternData={patternData}
-      visualizer={visualizer}
-      animation={<Animation state={patternData.initialState} />}
-    />
+    Animation && (
+      <PatternVisualizerLayout
+        className={className}
+        visualizer={visualizer}
+        animation={<Animation state={patternData.initialState} />}
+      />
+    )
   );
 }

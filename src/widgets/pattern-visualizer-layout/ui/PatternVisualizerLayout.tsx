@@ -33,52 +33,54 @@ export function PatternVisualizerLayout<
   const patternData = visualizer.patternData;
 
   return (
-    <div className={className}>
-      {/* 시각화 + 코드 통합 박스 */}
-      <div className="bg-white">
-        {/* ProgressBar */}
-        <ProgressBar
-          value={visualizer.progress}
-          height="sm"
-          showSteps={false}
-          currentStep={visualizer.currentStep}
-          totalSteps={visualizer.totalSteps}
-        />
+    patternData && (
+      <div className={className}>
+        {/* 시각화 + 코드 통합 박스 */}
+        <div className="bg-white">
+          {/* ProgressBar */}
+          <ProgressBar
+            value={visualizer.progress}
+            height="sm"
+            showSteps={false}
+            currentStep={visualizer.currentStep}
+            totalSteps={visualizer.totalSteps}
+          />
 
-        {/* 컨텐츠 영역 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 divide-x divide-slate-200">
-          {/* 왼쪽: 애니메이션 뷰 */}
-          <div className="flex flex-col gap-4 p-4">
-            {/* 컨트롤 */}
-            {animation}
-            <AnimationControls
-              visualizer={visualizer}
-              className="items-center justify-end"
-            />
-          </div>
-
-          {/* 오른쪽: 코드 뷰 */}
-          <div className="p-4">
-            <div className="mb-2 flex items-center justify-between py-2">
-              <h3 className="text-xl font-semibold text-slate-900">
-                Java 코드
-              </h3>
-              <p className="text-slate-500">
-                하이라이트된 라인이 현재 실행 중인 코드입니다
-              </p>
+          {/* 컨텐츠 영역 */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 divide-x divide-slate-200">
+            {/* 왼쪽: 애니메이션 뷰 */}
+            <div className="flex flex-col gap-4 p-4">
+              {/* 컨트롤 */}
+              {animation}
+              <AnimationControls
+                visualizer={visualizer}
+                className="items-center justify-end"
+              />
             </div>
-            <CodeViewer
-              code={patternData.javaCode}
-              highlightLines={visualizer.highlightLines}
-              language="java"
-              maxHeight="400px"
-            />
+
+            {/* 오른쪽: 코드 뷰 */}
+            <div className="p-4">
+              <div className="mb-2 flex items-center justify-between py-2">
+                <h3 className="text-xl font-semibold text-slate-900">
+                  Java 코드
+                </h3>
+                <p className="text-slate-500">
+                  하이라이트된 라인이 현재 실행 중인 코드입니다
+                </p>
+              </div>
+              <CodeViewer
+                code={patternData.javaCode}
+                highlightLines={visualizer.highlightLines}
+                language="java"
+                maxHeight="400px"
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* 하단: 패턴 설명 */}
-      <PatternDescription metadata={patternData.metadata} />
-    </div>
+        {/* 하단: 패턴 설명 */}
+        <PatternDescription metadata={patternData.metadata} />
+      </div>
+    )
   );
 }
