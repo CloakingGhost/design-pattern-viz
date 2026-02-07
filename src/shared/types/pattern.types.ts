@@ -132,11 +132,35 @@ export interface AdapterAnimationState extends BaseAnimationState {
   fits: boolean | null;
 }
 
+/**
+ * Builder 패턴의 애니메이션 상태
+ * 복잡한 객체를 단계별로 생성하는 과정을 시뮬레이션
+ */
+export interface BuilderAnimationState extends BaseAnimationState {
+  /** 현재 활성화된 빌더 타입 */
+  currentBuilder: 'CarBuilder' | 'ManualBuilder' | null;
+  /** Director 활성화 여부 */
+  directorActive: boolean;
+  /** 현재 생성 중인 제품 타입 */
+  productType: 'SportsCar' | 'SUV' | null;
+  /** 빌드 단계들 */
+  buildSteps: Array<{
+    step: 'reset' | 'setSeats' | 'setEngine' | 'setTripComputer' | 'setGPS';
+    value?: string | number;
+    completed: boolean;
+  }>;
+  /** 제품 완성 여부 */
+  isProductComplete: boolean;
+  /** 결과 제품 */
+  product: string | null;
+}
+
 /** 모든 패턴의 애니메이션 상태를 포괄하는 유니온 타입 */
 export type AnimationState =
   | SingletonAnimationState
   | StrategyAnimationState
-  | AdapterAnimationState;
+  | AdapterAnimationState
+  | BuilderAnimationState;
 
 // ============================================
 // 애니메이션 스텝 타입
@@ -180,6 +204,9 @@ export type StrategyPatternData = PatternData<StrategyAnimationState>;
 
 /** Adapter 패턴 데이터 타입 */
 export type AdapterPatternData = PatternData<AdapterAnimationState>;
+
+/** Builder 패턴 데이터 타입 */
+export type BuilderPatternData = PatternData<BuilderAnimationState>;
 
 // ============================================
 // 플레이어 상태 타입

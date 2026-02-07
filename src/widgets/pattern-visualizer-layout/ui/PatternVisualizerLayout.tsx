@@ -44,7 +44,7 @@ export function PatternVisualizerLayout<
         {/* ProgressBar */}
         <ProgressBar
           value={visualizer.progress}
-          height="md"
+          height="sm"
           showSteps={false}
           currentStep={visualizer.currentStep}
           totalSteps={visualizer.totalSteps}

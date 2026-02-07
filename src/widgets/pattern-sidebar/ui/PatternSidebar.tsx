@@ -60,7 +60,6 @@ export function PatternSidebar({
                   <div className="mt-1 ml-2 space-y-1 border-l border-slate-200">
                     {patterns.map((pattern) => {
                       const isSelected = currentPatternId === pattern.id;
-                      console.log("isSelected", isSelected, pattern);
 
                       if (!pattern.implemented) {
                         return (

@@ -4,10 +4,7 @@ import React from "react";
 import { SingletonAnimation } from "./SingletonAnimation";
 import { PatternVisualizerLayout } from "@/widgets/pattern-visualizer-layout";
 import { usePatternVisualizer } from "@/shared/hooks";
-import type {
-  SingletonPatternData,
-  SingletonAnimationState,
-} from "@/shared/types";
+import type { SingletonPatternData } from "@/shared/types";
 
 /**
  * SingletonVisualizer 컴포넌트 Props
@@ -33,7 +30,9 @@ export function SingletonVisualizer({
   patternData,
   className = "",
 }: SingletonVisualizerProps) {
-  const visualizer = usePatternVisualizer<SingletonAnimationState>(patternData);
+  // PatternPageClient에서 이미 loadPattern을 호출했으므로,
+  // 여기서는 스토어 상태만 가져옵니다
+  const visualizer = usePatternVisualizer();
 
   return (
     <PatternVisualizerLayout

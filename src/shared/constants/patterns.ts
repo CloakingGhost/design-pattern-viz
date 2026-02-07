@@ -36,7 +36,7 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Builder",
       nameKo: "빌더",
       category: "creational",
-      implemented: false,
+      implemented: true,
     },
     {
       id: "prototype",

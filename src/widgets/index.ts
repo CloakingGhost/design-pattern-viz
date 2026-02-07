@@ -5,6 +5,7 @@ export {
 } from "./singleton-visualizer";
 export { StrategyVisualizer, StrategyAnimation } from "./strategy-visualizer";
 export { AdapterVisualizer, AdapterAnimation } from "./adapter-visualizer";
+export { BuilderVisualizer, BuilderAnimation } from "./builder-visualizer";
 export { PatternVisualizerLayout } from "./pattern-visualizer-layout";
 export { Navigation } from "./navigation";
 export { PatternSidebar } from "./pattern-sidebar";

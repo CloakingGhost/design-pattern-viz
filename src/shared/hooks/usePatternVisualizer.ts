@@ -51,6 +51,8 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
 
     if (previousPatternIdRef.current !== currentPatternId) {
       previousPatternIdRef.current = currentPatternId;
+      console.log("patternData", patternData);
+      
       loadPattern(patternData);
     }
   }, [patternData, loadPattern]);
