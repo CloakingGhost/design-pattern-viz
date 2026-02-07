@@ -4,7 +4,7 @@ import React from "react";
 import { AdapterAnimation } from "./AdapterAnimation";
 import { PatternVisualizerLayout } from "@/widgets/pattern-visualizer-layout";
 import { usePatternVisualizer } from "@/shared/hooks";
-import type { AdapterPatternData } from "@/shared/types";
+import type { AdapterAnimationState, AdapterPatternData } from "@/shared/types";
 
 /**
  * AdapterVisualizer 컴포넌트 Props
@@ -29,9 +29,7 @@ export function AdapterVisualizer({
   patternData,
   className = "",
 }: AdapterVisualizerProps) {
-  // PatternPageClient에서 이미 loadPattern을 호출했으므로,
-  // 여기서는 스토어 상태만 가져옵니다
-  const visualizer = usePatternVisualizer();
+  const visualizer = usePatternVisualizer<AdapterAnimationState>();
 
   return (
     <PatternVisualizerLayout

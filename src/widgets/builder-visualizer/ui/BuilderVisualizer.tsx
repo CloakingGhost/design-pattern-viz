@@ -4,7 +4,7 @@ import React from "react";
 import { BuilderAnimation } from "./BuilderAnimation";
 import { PatternVisualizerLayout } from "@/widgets/pattern-visualizer-layout";
 import { usePatternVisualizer } from "@/shared/hooks";
-import type { BuilderPatternData } from "@/shared/types";
+import type { BuilderAnimationState, BuilderPatternData } from "@/shared/types";
 
 /**
  * BuilderVisualizer 컴포넌트 Props
@@ -29,11 +29,7 @@ export function BuilderVisualizer({
   patternData,
   className = "",
 }: BuilderVisualizerProps) {
-  // PatternPageClient에서 이미 loadPattern을 호출했으므로,
-  // 여기서는 스토어 상태만 가져옵니다
-  const visualizer = usePatternVisualizer();
-  console.log("patternData:", patternData);
-  console.log("visualizer:", visualizer);
+  const visualizer = usePatternVisualizer<BuilderAnimationState>();
 
   return (
     <PatternVisualizerLayout

@@ -3,12 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import { DEFAULT_PATTERN_BY_CATEGORY } from "@/shared/constants";
+import type { PatternCategory } from "@/shared/types";
 import { cn } from "@/shared/lib";
 
 /**
  * 네비게이션 탭 정의
  */
-const navTabs = [
+const navTabs: Array<{
+  id: PatternCategory;
+  label: string;
+  description: string;
+}> = [
   {
     id: "creational",
     label: "생성 패턴",
@@ -47,7 +52,7 @@ export function Navigation({ className }: NavigationProps) {
   return (
     <nav className={cn("flex items-center gap-1", className)}>
       {navTabs.map((tab) => {
-        const tapHref = `${tab.id / DEFAULT_PATTERN_BY_CATEGORY[tab.id]}`;
+        const tapHref = `${tab.id}/${DEFAULT_PATTERN_BY_CATEGORY[tab.id]}`;
 
         return (
           <Link

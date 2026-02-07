@@ -84,9 +84,6 @@ export function PatternSidebar({
                               : "text-slate-600 hover:bg-slate-100 hover:text-slate-900",
                           )}
                         >
-                          <span className="w-5 text-center">
-                            {pattern.icon}
-                          </span>
                           <span>{pattern.nameKo}</span>
                         </Link>
                       );

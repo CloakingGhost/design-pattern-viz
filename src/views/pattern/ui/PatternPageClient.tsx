@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
+import type { AnimationState, PatternData } from "@/shared/types";
 import {
   SingletonVisualizer,
   StrategyVisualizer,
@@ -10,24 +11,25 @@ import {
 import { patternDataById } from "@/data";
 import { useVisualizerStore } from "@/shared/store";
 
-const getPatternData = (id: string) =>
-  (
-    patternDataById as Record<
-      string,
-      (typeof patternDataById)[keyof typeof patternDataById]
-    >
-  )[id];
-
 interface PatternPageClientProps {
   patternId: string;
 }
+
+type AnyPatternData = PatternData<AnimationState>;
+type VisualizerComponent = React.ComponentType<{
+  patternData: AnyPatternData;
+  className?: string;
+}>;
 
 const visualizerMap = {
   singleton: SingletonVisualizer,
   strategy: StrategyVisualizer,
   adapter: AdapterVisualizer,
   builder: BuilderVisualizer,
-};
+} as const;
+
+const getPatternData = (id: string) =>
+  (patternDataById as Record<string, AnyPatternData>)[id];
 
 export function PatternPageClient({ patternId }: PatternPageClientProps) {
   const { loadPattern } = useVisualizerStore();
@@ -35,7 +37,6 @@ export function PatternPageClient({ patternId }: PatternPageClientProps) {
     (state) => state.player.selectedPatternId,
   );
 
-  // 패턴 변경 시 스토어 상태를 먼저 업데이트
   useLayoutEffect(() => {
     const patternData = getPatternData(patternId);
 
@@ -55,7 +56,9 @@ export function PatternPageClient({ patternId }: PatternPageClientProps) {
     return null;
   }
 
-  const Visualizer = visualizerMap[patternId as keyof typeof visualizerMap];
+  const Visualizer = visualizerMap[
+    patternId as keyof typeof visualizerMap
+  ] as VisualizerComponent;
 
   if (!Visualizer) {
     return null;
