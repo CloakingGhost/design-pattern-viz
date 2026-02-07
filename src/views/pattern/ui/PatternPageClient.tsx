@@ -49,7 +49,6 @@ export function PatternPageClient({
   return (
     <PatternVisualizerLayout
       className={className}
-      patternData={patternData}
       visualizer={visualizer}
       animation={<Animation state={visualizer.animationState} />}
     />
