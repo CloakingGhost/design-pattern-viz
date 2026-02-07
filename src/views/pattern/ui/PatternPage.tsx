@@ -1,16 +1,16 @@
+"use client";
+
 import { PatternSidebar } from "@/widgets";
 import { patternDataById } from "@/data";
 import { PATTERN_CATALOG } from "@/shared/constants";
 import { PatternPageClient } from "./PatternPageClient";
 import type { PatternCategory } from "@/shared/types";
-
 interface PatternPageProps {
   category: PatternCategory;
   patternId: string;
 }
 
 export function PatternPage({ category, patternId }: PatternPageProps) {
-
   const patterns = PATTERN_CATALOG[category];
   const selectedPattern =
     patterns.find((pattern) => pattern.id === patternId) ?? patterns[0];
@@ -38,7 +38,7 @@ export function PatternPage({ category, patternId }: PatternPageProps) {
         <main className="flex-1 overflow-y-auto bg-linear-to-br from-slate-50 via-white to-blue-50">
           <div className="w-full mx-auto">
             {/* 선택된 패턴 */}
-            {isImplemented && <PatternPageClient patternId={patternId} />}
+            {isImplemented && <PatternPageClient patternData={patternData} />}
 
             {!isImplemented && (
               <div className="bg-white border border-slate-200 shadow-sm p-10 text-center">

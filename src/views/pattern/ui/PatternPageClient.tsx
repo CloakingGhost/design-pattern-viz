@@ -1,68 +1,56 @@
 "use client";
 
-import { useLayoutEffect } from "react";
 import type { AnimationState, PatternData } from "@/shared/types";
 import {
-  SingletonVisualizer,
-  StrategyVisualizer,
-  AdapterVisualizer,
-  BuilderVisualizer,
+  SingletonAnimation,
+  StrategyAnimation,
+  AdapterAnimation,
+  BuilderAnimation,
 } from "@/widgets";
-import { patternDataById } from "@/data";
-import { useVisualizerStore } from "@/shared/store";
+import { usePatternVisualizer } from "@/shared/hooks";
+import { PatternVisualizerLayout } from "@/widgets/pattern-visualizer-layout";
 
 interface PatternPageClientProps {
-  patternId: string;
+  patternData: PatternData<AnimationState>;
+  className?: string;
 }
 
-type AnyPatternData = PatternData<AnimationState>;
-type VisualizerComponent = React.ComponentType<{
-  patternData: AnyPatternData;
-  className?: string;
-}>;
+type AnimationComponent = React.ComponentType<{ state: AnimationState | null }>;
 
-const visualizerMap = {
-  singleton: SingletonVisualizer,
-  strategy: StrategyVisualizer,
-  adapter: AdapterVisualizer,
-  builder: BuilderVisualizer,
+const animationMap = {
+  singleton: SingletonAnimation,
+  strategy: StrategyAnimation,
+  adapter: AdapterAnimation,
+  builder: BuilderAnimation,
 } as const;
 
-const getPatternData = (id: string) =>
-  (patternDataById as Record<string, AnyPatternData>)[id];
+export function PatternPageClient({
+  patternData,
+  className,
+}: PatternPageClientProps) {
+  const visualizer = usePatternVisualizer(patternData);
 
-export function PatternPageClient({ patternId }: PatternPageClientProps) {
-  const { loadPattern } = useVisualizerStore();
-  const selectedPatternId = useVisualizerStore(
-    (state) => state.player.selectedPatternId,
+  // Update Store after render
+  if (visualizer.selectedPatternId !== patternData.metadata.id) {
+    return (
+      <div className="w-full px-10 py-16 text-center text-slate-500">
+        로딩 중...
+      </div>
+    );
+  }
+
+  const Animation = animationMap[
+    patternData.metadata.id as keyof typeof animationMap
+  ] as AnimationComponent | undefined;
+
+  if (!Animation) return null;
+
+  return (
+    <PatternVisualizerLayout
+      className={className}
+      patternData={patternData}
+      visualizer={visualizer}
+      animation={<Animation state={patternData.initialState} />}
+    />
   );
-
-  useLayoutEffect(() => {
-    const patternData = getPatternData(patternId);
-
-    if (patternData) {
-      loadPattern(patternData);
-    }
-  }, [patternId, loadPattern]);
-
-  // useLayoutEffect를 위한 부분
-  if (selectedPatternId !== patternId) {
-    return null;
-  }
-
-  const patternData = getPatternData(patternId);
-
-  if (!patternData) {
-    return null;
-  }
-
-  const Visualizer = visualizerMap[
-    patternId as keyof typeof visualizerMap
-  ] as VisualizerComponent;
-
-  if (!Visualizer) {
-    return null;
-  }
-
-  return <Visualizer patternData={patternData} />;
 }

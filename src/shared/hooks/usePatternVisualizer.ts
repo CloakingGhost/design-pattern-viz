@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useEffect, useRef } from "react";
 import { useVisualizerStore } from "@/shared/store";
 import type { AnimationState, PatternData } from "@/shared/types";
 
@@ -22,7 +22,6 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
   const {
     patternData: storePatternData,
     player,
-    currentAnimationState,
     loadPattern,
     nextStep,
     prevStep,
@@ -38,23 +37,14 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
   // 타이머 참조 (메모리 누수 방지)
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 이전 패턴 ID 추적
-  const previousPatternIdRef = useRef<string | undefined>(undefined);
-
   /**
    * 패턴 데이터가 변경되면 스토어에 로드
    */
-  useEffect(() => {
+  useLayoutEffect(() => {
     const currentPatternId = patternData?.metadata?.id;
+    if (!currentPatternId) return;
 
-    if (!currentPatternId || !patternData) return;
-
-    if (previousPatternIdRef.current !== currentPatternId) {
-      previousPatternIdRef.current = currentPatternId;
-      console.log("patternData", patternData);
-      
-      loadPattern(patternData);
-    }
+    loadPattern(patternData);
   }, [patternData, loadPattern]);
 
   /**
@@ -118,7 +108,6 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
     isPlaying: player.isPlaying,
     playSpeed: player.playSpeed,
     selectedPatternId: player.selectedPatternId,
-    animationState: currentAnimationState as T | null,
     highlightLines: codeStepInfo?.highlightLines ?? [],
     progress,
     canGoPrev,

@@ -1,11 +1,8 @@
 // widgets 레이어 배럴 파일
-export {
-  SingletonVisualizer,
-  SingletonAnimation,
-} from "./singleton-visualizer";
-export { StrategyVisualizer, StrategyAnimation } from "./strategy-visualizer";
-export { AdapterVisualizer, AdapterAnimation } from "./adapter-visualizer";
-export { BuilderVisualizer, BuilderAnimation } from "./builder-visualizer";
+export { SingletonAnimation } from "./singleton-visualizer";
+export { StrategyAnimation } from "./strategy-visualizer";
+export { AdapterAnimation } from "./adapter-visualizer";
+export { BuilderAnimation } from "./builder-visualizer";
 export { PatternVisualizerLayout } from "./pattern-visualizer-layout";
 export { Navigation } from "./navigation";
 export { PatternSidebar } from "./pattern-sidebar";

@@ -5,7 +5,7 @@ import { CodeViewer } from "@/entities/code-viewer";
 import { PatternDescription } from "@/entities/pattern-description";
 import { AnimationControls } from "@/features/animation-controls";
 import { ProgressBar } from "@/shared/ui";
-import type { AnimationState, PatternData } from "@/shared/types";
+import type { AnimationState } from "@/shared/types";
 import type { UsePatternVisualizerReturn } from "@/shared/hooks";
 
 /**
@@ -14,8 +14,6 @@ import type { UsePatternVisualizerReturn } from "@/shared/hooks";
 export interface PatternVisualizerLayoutProps<
   T extends AnimationState = AnimationState,
 > {
-  /** 패턴 데이터 */
-  patternData: PatternData<T>;
   /** visualizer 훅 반환값 */
   visualizer: UsePatternVisualizerReturn<T>;
   /** 좌측 애니메이션 영역 */
@@ -31,12 +29,9 @@ export interface PatternVisualizerLayoutProps<
  */
 export function PatternVisualizerLayout<
   T extends AnimationState = AnimationState,
->({
-  patternData,
-  visualizer,
-  animation,
-  className = "",
-}: PatternVisualizerLayoutProps<T>) {
+>({ visualizer, animation, className = "" }: PatternVisualizerLayoutProps<T>) {
+  const patternData = visualizer.patternData;
+
   return (
     <div className={className}>
       {/* 시각화 + 코드 통합 박스 */}
