@@ -1,4 +1,4 @@
-import { useLayoutEffect, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useVisualizerStore } from "@/shared/store";
 import type { AnimationState, PatternData } from "@/shared/types";
 
@@ -41,7 +41,7 @@ export function usePatternVisualizer<T extends AnimationState = AnimationState>(
   /**
    * 패턴 데이터가 변경되면 스토어에 로드
    */
-  useLayoutEffect(() => {
+  useEffect(() => {
     const currentPatternId = patternData?.metadata?.id;
     if (!currentPatternId) return;
 
