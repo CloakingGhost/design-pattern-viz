@@ -22,6 +22,9 @@ const baseUrl = domain ? new URL(domain) : new URL('http://localhost:3000');
 export const metadata: Metadata = {
   metadataBase: baseUrl,
   title: "Design Pattern Visualizer | 디자인 패턴 시각화 학습",
+  verification: {
+    google: "google3f98ef4aa9d342df",
+  },
   description:
     "디자인 패턴의 동작 원리를 시각적 애니메이션으로 이해하세요. Singleton, Strategy 등 주요 패턴을 단계별로 학습합니다.",
   keywords: [
