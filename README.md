@@ -1,36 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+디자인 패턴 학습에 도움을 드립니다.
 
-## Getting Started
+애니매이션을 통해 디자인 패턴을 시각적으로 이해할 수 있도록 돕습니다.
+예시 상황을 통해 단계적으로 각 패턴이 어떻게 동작하는지 보여줍니다.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### log
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[26.02.05] 생성(싱글톤) / 행위(전략패턴) 구현, SEO(Open Graph, metadata)
+[26.02.06] Webhook 배포 알림, 공통 컴포넌트 생성
+[26.02.08] 생성(빌더) /구조(어댑터) 구현, [랜더링 최적화](https://cloakinghost.tistory.com/194), 사이드 바 적용
+[26.02.15] [skills.sh](https://www.youtube.com/watch?v=jae2bVCCokc) 적용 
