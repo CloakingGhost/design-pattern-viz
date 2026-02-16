@@ -26,7 +26,7 @@ import type { SingletonPatternData, SingletonAnimationState } from '@/shared/typ
  */
 const initialState: SingletonAnimationState = {
   instanceExists: false,      // private static Singleton instance = null
-  callerId: null,             
+  callerId: null,
   isCreating: false,
   isReturning: false,
   resultMessage: '시작하려면 재생 버튼을 클릭하세요',
@@ -95,7 +95,7 @@ const codeSteps = [
   },
   {
     stepIndex: 3,
-    highlightLines: [13],
+    highlightLines: [14],
     codeContext: 'instance == null → true',
   },
   {
