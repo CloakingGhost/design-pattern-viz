@@ -30,12 +30,12 @@ export function FactoryMethodAnimation({ state }: FactoryMethodAnimationProps) {
             <div
               className={`p-4 rounded-xl border-2 transition-colors duration-300 ${
                 financialInfo
-                  ? "bg-blue-50 border-blue-200"
+                  ? "bg-primary-bg border-[var(--color-primary-light)]"
                   : "bg-slate-100 border-slate-200"
               }`}
             >
               <div className="flex items-center space-x-2 mb-2">
-                <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold">
                   C
                 </div>
                 <span className="font-bold text-slate-700">Client</span>
@@ -47,7 +47,9 @@ export function FactoryMethodAnimation({ state }: FactoryMethodAnimationProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-white p-3 rounded-lg border border-blue-100 text-xs shadow-sm space-y-1"
                 >
-                  <p className="font-semibold text-blue-600">FinancialInfo</p>
+                  <p className="font-semibold text-primary">
+                    FinancialInfo
+                  </p>
                   <p className="text-slate-500">
                     Card: {financialInfo.cardNumber?.slice(0, 4)}...
                   </p>

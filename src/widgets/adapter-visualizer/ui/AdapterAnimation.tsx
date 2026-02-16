@@ -55,16 +55,16 @@ export function AdapterAnimation({
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  className="bg-purple-50 border-2 border-purple-300 rounded-lg p-4"
+                  className="bg-secondary-bg border-2 border-secondary-light rounded-lg p-4"
                 >
                   <div className="text-center">
-                    <p className="text-xs font-bold text-purple-600 mb-2">
+                    <p className="text-xs font-bold text-secondary mb-2">
                       Target Interface
                     </p>
-                    <h3 className="text-base font-bold text-purple-900 mb-2">
+                    <h3 className="text-base font-bold text-secondary-hover mb-2">
                       RoundPeg
                     </h3>
-                    <code className="text-sm text-purple-700">
+                    <code className="text-sm text-secondary">
                       int getRadius()
                     </code>
                   </div>
@@ -105,12 +105,14 @@ export function AdapterAnimation({
             transition={{ duration: 0.4 }}
             className="flex flex-col items-center gap-3"
           >
-            <div className="w-24 h-24 rounded-full border-4 border-blue-500 flex items-center justify-center bg-blue-50 shadow-md">
+            <div className="w-24 h-24 rounded-full border-4 border-primary flex items-center justify-center bg-primary-bg shadow-md">
               <div className="text-5xl">⭕</div>
             </div>
             <div className="text-center">
-              <h3 className="font-bold text-blue-900">RoundHole</h3>
-              <p className="text-blue-700 font-medium">
+              <h3 className="font-bold text-primary-hover">
+                RoundHole
+              </h3>
+              <p className="text-primary font-medium">
                 radius: {state.roundPegRadius ?? "-"}
               </p>
             </div>

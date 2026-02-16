@@ -29,7 +29,6 @@ export function BuilderAnimation({
   state,
   className = "",
 }: BuilderAnimationProps) {
-
   if (!state) {
     return (
       <div className={`flex items-center justify-center h-64 ${className}`}>
@@ -53,13 +52,13 @@ export function BuilderAnimation({
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="bg-purple-50 border-2 border-purple-400 rounded-lg p-4 shadow-lg"
+                className="bg-[var(--color-secondary-bg)] border-2 border-[var(--color-secondary)] rounded-lg p-4 shadow-lg"
               >
                 <div className="text-center">
-                  <h3 className="text-base font-bold text-purple-900 mb-1">
+                  <h3 className="text-base font-bold text-[var(--color-secondary)] mb-1">
                     Director
                   </h3>
-                  <p className="text-sm text-purple-700">
+                  <p className="text-sm text-[var(--color-secondary-hover)]">
                     {state.productType === "SportsCar"
                       ? "constructSportsCar()"
                       : state.productType === "SUV"
@@ -190,8 +189,6 @@ export function BuilderAnimation({
               "setTripComputer",
               "setGPS",
             ].map((stepName) => {
-                
-                
               const step = state.buildSteps.find((s) => s.step === stepName);
               const isCompleted = step?.completed || false;
 

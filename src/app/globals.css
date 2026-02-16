@@ -7,6 +7,35 @@
 :root {
   --background: #ffffff;
   --foreground: #1e293b;
+
+  /* OKLCH Color System */
+  /* Primary colors - Vibrant Purple */
+  --color-primary: oklch(42% 0.161 292);
+  --color-primary-hover: oklch(38% 0.161 292);
+  --color-primary-active: oklch(34% 0.161 292);
+  --color-primary-light: oklch(50% 0.161 292);
+  --color-primary-bg: oklch(95% 0.08 292);
+
+  /* Secondary colors - Deep Blue */
+  --color-secondary: oklch(42% 0.161 232);
+  --color-secondary-hover: oklch(38% 0.161 232);
+  --color-secondary-active: oklch(34% 0.161 232);
+  --color-secondary-light: oklch(50% 0.161 232);
+  --color-secondary-bg: oklch(95% 0.08 232);
+
+  /* Browser fallbacks for older browsers */
+  @supports not (color: oklch(0% 0 0)) {
+    --color-primary: #7c3aed;
+    --color-primary-hover: #6d28d9;
+    --color-primary-active: #5b21b6;
+    --color-primary-light: #8b5cf6;
+    --color-primary-bg: #f5f3ff;
+    --color-secondary: #2563eb;
+    --color-secondary-hover: #1d4ed8;
+    --color-secondary-active: #1e40af;
+    --color-secondary-light: #3b82f6;
+    --color-secondary-bg: #eff6ff;
+  }
 }
 
 @theme inline {
@@ -14,6 +43,20 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Primary color utilities */
+  --color-primary: var(--color-primary);
+  --color-primary-hover: var(--color-primary-hover);
+  --color-primary-active: var(--color-primary-active);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-bg: var(--color-primary-bg);
+
+  /* Secondary color utilities */
+  --color-secondary: var(--color-secondary);
+  --color-secondary-hover: var(--color-secondary-hover);
+  --color-secondary-active: var(--color-secondary-active);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-secondary-bg: var(--color-secondary-bg);
 }
 
 /* 다크 모드 무시 - 항상 라이트 모드 유지 */

@@ -109,20 +109,20 @@ export function SingletonAnimation({
                 }}
               >
                 <div
-                  className={`w-12 sm:w-20 h-0.5 ${state.isReturning ? "bg-green-600" : "bg-blue-600"}`}
+                  className={`w-12 sm:w-20 h-0.5 ${state.isReturning ? "bg-green-600" : "bg-primary"}`}
                   aria-hidden="true"
                 />
                 <div
                   className={`w-0 h-0 border-t-6 border-b-6 border-l-10 border-transparent ${
                     state.isReturning
                       ? "border-l-green-600 rotate-180 -ms-21 me-21"
-                      : "border-l-blue-600"
+                      : "border-l-primary"
                   }`}
                   aria-hidden="true"
                 />
               </motion.div>
               <span
-                className={`text-xs sm:text-sm font-semibold ${state.isReturning ? "text-green-700" : "text-blue-700"}`}
+                className={`text-xs sm:text-sm font-semibold ${state.isReturning ? "text-green-700" : "text-primary"}`}
               >
                 {state.isReturning ? "return instance" : "getInstance()"}
               </span>
@@ -192,10 +192,10 @@ export function SingletonAnimation({
                   <span
                     className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${
                       call.action === "create"
-                        ? "bg-purple-600"
+                        ? "bg-secondary"
                         : call.action === "return"
                           ? "bg-green-600"
-                          : "bg-blue-600"
+                          : "bg-primary"
                     }`}
                     aria-hidden="true"
                   />
@@ -231,7 +231,7 @@ function ClientNode({
         border-2 shadow-lg transition-all duration-300 touch-manipulation
         ${
           isActive
-            ? "bg-blue-600 border-blue-700 text-white hover:bg-blue-700 hover:border-blue-800"
+            ? "bg-primary border-primary-hover text-white hover:bg-primary-hover hover:border-primary-active"
             : "bg-white border-slate-300 text-slate-600 hover:border-slate-400"
         }
       `}
@@ -240,9 +240,9 @@ function ClientNode({
           ? {
               scale: [1, 1.05, 1],
               boxShadow: [
-                "0 4px 6px rgba(37, 99, 235, 0.3)",
-                "0 8px 12px rgba(37, 99, 235, 0.4)",
-                "0 4px 6px rgba(37, 99, 235, 0.3)",
+                "0 4px 6px rgba(124, 58, 237, 0.3)",
+                "0 8px 12px rgba(124, 58, 237, 0.4)",
+                "0 4px 6px rgba(124, 58, 237, 0.3)",
               ],
             }
           : {}
@@ -282,7 +282,7 @@ function SingletonClassNode({
         border-2 shadow-xl transition-all duration-300 touch-manipulation
         ${
           instanceExists
-            ? "bg-purple-600 border-purple-700 hover:bg-purple-700 hover:border-purple-800"
+            ? "bg-secondary border-secondary-hover hover:bg-secondary-hover hover:border-secondary-active"
             : "bg-white border-slate-300 hover:border-slate-400"
         }
       `}
@@ -293,7 +293,7 @@ function SingletonClassNode({
       <AnimatePresence>
         {isCreating && !prefersReducedMotion && (
           <motion.div
-            className="absolute inset-0 rounded-2xl border-4 border-purple-400"
+            className="absolute inset-0 rounded-2xl border-4 border-secondary-light"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{
               scale: [1, 1.2, 1.4],
@@ -330,7 +330,7 @@ function SingletonClassNode({
         w-32 sm:w-36 text-center
         ${
           instanceExists
-            ? "bg-purple-100 text-purple-800"
+            ? "bg-secondary-bg text-secondary"
             : "bg-slate-100 text-slate-700"
         }
       `}

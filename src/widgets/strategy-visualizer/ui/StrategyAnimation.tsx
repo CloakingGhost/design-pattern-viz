@@ -71,15 +71,15 @@ export function StrategyAnimation({
         {/* 1. Strategy Interface (상단) */}
         <div className="flex justify-center mb-8">
           <motion.div
-            className="bg-white rounded-lg p-4 border-2 border-blue-400 shadow-lg"
+            className="bg-white rounded-lg p-4 border-2 border-primary shadow-lg"
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
             <div className="text-center">
-              <h3 className="font-bold text-blue-900">
+              <h3 className="font-bold text-primary">
                 &laquo; interface &raquo;
               </h3>
-              <h4 className="text-base font-semibold text-blue-700">
+              <h4 className="text-base font-semibold text-primary-hover">
                 PaymentStrategy
               </h4>
               <code className="text-sm text-slate-600">
@@ -176,7 +176,7 @@ export function StrategyAnimation({
                 border-4 shadow-2xl transition-all duration-500
                 ${
                   state.contextActive
-                    ? "bg-linear-to-br from-white to-indigo-50 border-indigo-500"
+                    ? "bg-linear-to-br from-white to-primary-bg border-primary"
                     : "bg-white border-slate-300"
                 }
               `}

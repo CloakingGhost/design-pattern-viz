@@ -29,12 +29,12 @@ export function Button({
 }: ButtonProps) {
   // 기본 스타일
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
+    "inline-flex items-center justify-center font-medium transition-all duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed";
 
   // 변형별 스타일
   const variantStyles = {
     primary:
-      "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm",
+      "bg-primary text-white hover:bg-primary-hover active:bg-primary-active shadow-sm",
     secondary:
       "bg-slate-100 text-slate-700 hover:bg-slate-200 active:bg-slate-300 border border-slate-200",
     ghost:
@@ -56,7 +56,7 @@ export function Button({
         baseStyles,
         variantStyles[variant],
         variant !== "icon" && sizeStyles[size],
-        isActive && "ring-2 ring-blue-500",
+        isActive && "ring-2 ring-primary",
         className,
       )}
       disabled={disabled}
