@@ -110,15 +110,22 @@ if [[ ! -f "$NOTES_FILE" ]]; then
     exit 1
 fi
 
-# GitHub CLI 설치 확인
-if ! command -v gh &> /dev/null; then
+# GitHub CLI 설치 확인 및 경로 설정
+GH_CLI=""
+if command -v gh &> /dev/null; then
+    GH_CLI="gh"
+elif [[ -f "/c/Program Files/GitHub CLI/gh" ]]; then
+    GH_CLI="/c/Program Files/GitHub CLI/gh"
+elif [[ -f "/c/Program Files/GitHub CLI/gh.exe" ]]; then
+    GH_CLI="/c/Program Files/GitHub CLI/gh.exe"
+else
     echo -e "${RED}Error: GitHub CLI (gh) is not installed${NC}"
     echo -e "${YELLOW}Please install it with: winget install --id GitHub.cli${NC}"
     exit 1
 fi
 
 # GitHub CLI 인증 확인
-if ! gh auth status &> /dev/null; then
+if ! "$GH_CLI" auth status &> /dev/null; then
     echo -e "${RED}Error: GitHub CLI is not authenticated${NC}"
     echo -e "${YELLOW}Please run: gh auth login${NC}"
     exit 1
@@ -144,7 +151,7 @@ echo -e "${BLUE}===========================================${NC}"
 echo ""
 
 # gh release create 명령 구성
-GH_CMD="gh release create \"$TAG\""
+GH_CMD="\"$GH_CLI\" release create \"$TAG\""
 GH_CMD="$GH_CMD --title \"$TITLE\""
 GH_CMD="$GH_CMD --notes-file \"$NOTES_FILE\""
 GH_CMD="$GH_CMD --target \"$TARGET_BRANCH\""
@@ -184,7 +191,7 @@ if eval "$GH_CMD"; then
     echo -e "${GREEN}✓ Release created successfully!${NC}"
     
     # 릴리즈 URL 출력
-    REPO=$(gh repo view --json nameWithOwner -q .nameWithOwner)
+    REPO=$("$GH_CLI" repo view --json nameWithOwner -q .nameWithOwner)
     if [[ "$DRAFT_MODE" == true ]]; then
         echo -e "${YELLOW}Draft Release URL:${NC} https://github.com/$REPO/releases"
     else
