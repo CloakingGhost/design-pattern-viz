@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { redirect } from "next/navigation";
 import { PatternPage } from "@/views";
 import {
@@ -9,16 +10,17 @@ import {
 } from "@/shared/seo/patternSeo";
 
 interface PageProps {
-  params: { pattern: string };
+  params: Promise<{ pattern: string }>;
 }
 
 const baseUrl = process.env.NEXT_PUBLIC_DOMAIN ?? "http://localhost:3000";
 const base = new URL(baseUrl);
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const canonicalPatternId = getCanonicalPatternId(
+  const { pattern } = await params;
+  const canonicalPatternId = await getCanonicalPatternId(
     "creational",
-    params.pattern,
+    pattern,
   );
 
   return buildPatternMetadata({
@@ -44,10 +46,9 @@ export default async function Page({ params }: PageProps) {
   return (
     <>
       <PatternPage category="creational" patternId={pattern} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <Script id={`jsonld-${pattern}`} type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </Script>
     </>
   );
 }
