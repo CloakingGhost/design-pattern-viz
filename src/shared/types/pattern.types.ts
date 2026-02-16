@@ -155,12 +155,34 @@ export interface BuilderAnimationState extends BaseAnimationState {
   product: string | null;
 }
 
+/**
+ * Factory Method 패턴의 애니메이션 상태
+ * 객체 생성을 서브클래스(Concrete Factory)에 위임하는 과정을 시뮬레이션
+ */
+export interface FactoryMethodAnimationState extends BaseAnimationState {
+  /** 현재 선택된 팩토리 */
+  currentFactory: 'CreditCardPaymentFactory' | 'PayPalPaymentFactory' | 'BankTransferPaymentFactory' | null;
+  /** 현재 활성화된 제품 타입 */
+  paymentType: 'CreditCardPayment' | 'PayPalPayment' | 'BankTransferPayment' | null;
+  /** 결제 정보 (Client가 준비한 데이터) */
+  financialInfo: {
+    cardNumber?: string;
+    email?: string;
+    accountNumber?: string;
+  } | null;
+  /** 생성된 제품 객체 (인스턴스) */
+  createdPayment: string | null;
+  /** 결제 실행 결과 메시지 */
+  paymentResult: string | null;
+}
+
 /** 모든 패턴의 애니메이션 상태를 포괄하는 유니온 타입 */
 export type AnimationState =
   | SingletonAnimationState
   | StrategyAnimationState
   | AdapterAnimationState
-  | BuilderAnimationState;
+  | BuilderAnimationState
+  | FactoryMethodAnimationState;
 
 // ============================================
 // 애니메이션 스텝 타입
@@ -207,6 +229,9 @@ export type AdapterPatternData = PatternData<AdapterAnimationState>;
 
 /** Builder 패턴 데이터 타입 */
 export type BuilderPatternData = PatternData<BuilderAnimationState>;
+
+/** Factory Method 패턴 데이터 타입 */
+export type FactoryMethodPatternData = PatternData<FactoryMethodAnimationState>;
 
 // ============================================
 // 플레이어 상태 타입

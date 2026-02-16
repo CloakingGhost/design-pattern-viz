@@ -6,6 +6,7 @@ import {
   StrategyAnimation,
   AdapterAnimation,
   BuilderAnimation,
+  FactoryMethodAnimation,
 } from "@/widgets";
 import { usePatternVisualizer } from "@/shared/hooks";
 import { PatternVisualizerLayout } from "@/widgets/pattern-visualizer-layout";
@@ -22,6 +23,7 @@ const animationMap = {
   strategy: StrategyAnimation,
   adapter: AdapterAnimation,
   builder: BuilderAnimation,
+  "factory-method": FactoryMethodAnimation,
 } as const;
 
 export function PatternPageClient({

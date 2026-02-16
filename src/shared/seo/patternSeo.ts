@@ -17,7 +17,7 @@ export function patternExists(category: PatternCategory, patternId: string) {
   return PATTERN_CATALOG[category].some((item) => item.id === patternId);
 }
 
-export function getCanonicalPatternId(
+export async function getCanonicalPatternId(
   category: PatternCategory,
   patternId: string,
 ) {
@@ -77,15 +77,15 @@ export function buildPatternMetadata({
       type: "article",
       ...(ogImageUrl
         ? {
-            images: [
-              {
-                url: ogImageUrl,
-                width: 1200,
-                height: 630,
-                alt: `${nameKo} (${name}) - Design Pattern Visualizer`,
-              },
-            ],
-          }
+          images: [
+            {
+              url: ogImageUrl,
+              width: 1200,
+              height: 630,
+              alt: `${nameKo} (${name}) - Design Pattern Visualizer`,
+            },
+          ],
+        }
         : {}),
     },
   };

@@ -22,7 +22,7 @@ export const PATTERN_CATALOG: Record<PatternCategory, PatternNavItem[]> = {
       name: "Factory Method",
       nameKo: "팩토리 메서드",
       category: "creational",
-      implemented: false,
+      implemented: true,
     },
     {
       id: "abstract-factory",
