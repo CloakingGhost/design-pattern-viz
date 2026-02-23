@@ -17,6 +17,7 @@ This skill activates when working with:
 - GitHub Actions (`**/.github/**`)
 - Environment files (`**/.env*`)
 - Deployment and infrastructure tasks
+- GitHub Release creation or versioning tasks
 
 ## Tech Stack
 
@@ -36,3 +37,7 @@ This skill activates when working with:
 ## Chapter References
 
 See `INDEX.md` for deployment guides.
+
+## Sub-Skills
+
+- **`github-release/`** — GitHub Release automation (git log → release notes → publish)
