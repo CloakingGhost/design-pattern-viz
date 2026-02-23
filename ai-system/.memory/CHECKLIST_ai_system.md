@@ -31,45 +31,45 @@
 
 ---
 
-## Phase 2: Workflows — Plan & Memory (🔴 High Priority)
+## Phase 2: Workflows — Plan & Memory (🔴 High Priority) ✅
 
-- [ ] 2.1 Create `.agent/workflows/plan.md` (root)
-  - [ ] Step 1: Analyze current project state
-  - [ ] Step 2: Write plan in Korean
-  - [ ] Step 3: Wait for user approval
-  - [ ] Step 4: Call `/memory` to persist documents
-- [ ] 2.2 Create `.agent/workflows/memory.md` (root)
-  - [ ] Step 1: Generate `PLAN_{feature}.md` in English
-  - [ ] Step 2: Generate `CONTEXT_{feature}.md` in English
-  - [ ] Step 3: Generate `CHECKLIST_{feature}.md` in English
-  - [ ] Step 4: Save to `ai-system/.memory/`, then stop
+- [x] 2.1 Create `.agent/workflows/plan.md` (root)
+  - [x] Step 1: Analyze current project state
+  - [x] Step 2: Write plan in Korean
+  - [x] Step 3: Wait for user approval
+  - [x] Step 4: Call `/memory` to persist documents
+- [x] 2.2 Create `.agent/workflows/memory.md` (root)
+  - [x] Step 1: Generate `PLAN_{feature}.md` in English
+  - [x] Step 2: Generate `CONTEXT_{feature}.md` in English
+  - [x] Step 3: Generate `CHECKLIST_{feature}.md` in English
+  - [x] Step 4: Save to `ai-system/.memory/`, then stop
 
 ---
 
-## Phase 3: Domain Skills (🟡 Medium Priority)
+## Phase 3: Domain Skills (🟡 Medium Priority) ✅
 
-- [ ] 3.1 `ai-system/.skills/frontend/`
-  - [ ] `SKILL.md` — YAML with globs: `**/app/**`, `**/*.tsx`, `**/*.ts`, `**/components/**`
-  - [ ] `INDEX.md` — Table of contents
-  - [ ] `chapters/nextjs-app-router.md`
-  - [ ] `chapters/fsd-architecture.md`
-  - [ ] `chapters/styling-guide.md` (Tailwind + shadcn)
-- [ ] 3.2 `ai-system/.skills/backend/`
-  - [ ] `SKILL.md` — YAML with globs: `**/src/main/java/**`, `**/*.java`, `**/build.gradle*`
-  - [ ] `INDEX.md` — Table of contents
-  - [ ] `chapters/spring-boot-setup.md`
-  - [ ] `chapters/ddd-architecture.md`
-  - [ ] `chapters/security-jwt.md`
-- [ ] 3.3 `ai-system/.skills/database/`
-  - [ ] `SKILL.md` — YAML with globs: `**/*.sql`, `**/entity/**`, `**/repository/**`
-  - [ ] `INDEX.md` — Table of contents
-  - [ ] `chapters/postgresql-schema.md` (DBML-based)
-  - [ ] `chapters/redis-config.md`
-- [ ] 3.4 `ai-system/.skills/devops/`
-  - [ ] `SKILL.md` — YAML with globs: `**/docker-compose*`, `**/Dockerfile*`, `**/.github/**`, `**/.env*`
-  - [ ] `INDEX.md` — Table of contents
-  - [ ] `chapters/docker-compose.md`
-  - [ ] `chapters/aws-deploy.md`
+- [x] 3.1 `ai-system/.skills/frontend/`
+  - [x] `SKILL.md` — YAML with globs: `**/app/**`, `**/*.tsx`, `**/*.ts`, `**/components/**`
+  - [x] `INDEX.md` — Table of contents
+  - [x] `chapters/nextjs-app-router.md`
+  - [x] `chapters/fsd-architecture.md`
+  - [x] `chapters/styling-guide.md` (Tailwind + shadcn)
+- [x] 3.2 `ai-system/.skills/backend/`
+  - [x] `SKILL.md` — YAML with globs: `**/src/main/java/**`, `**/*.java`, `**/build.gradle*`
+  - [x] `INDEX.md` — Table of contents
+  - [x] `chapters/spring-boot-setup.md`
+  - [x] `chapters/ddd-architecture.md`
+  - [x] `chapters/security-jwt.md`
+- [x] 3.3 `ai-system/.skills/database/`
+  - [x] `SKILL.md` — YAML with globs: `**/*.sql`, `**/entity/**`, `**/repository/**`
+  - [x] `INDEX.md` — Table of contents
+  - [x] `chapters/postgresql-schema.md` (DBML-based)
+  - [x] `chapters/redis-config.md`
+- [x] 3.4 `ai-system/.skills/devops/`
+  - [x] `SKILL.md` — YAML with globs: `**/docker-compose*`, `**/Dockerfile*`, `**/.github/**`, `**/.env*`
+  - [x] `INDEX.md` — Table of contents
+  - [x] `chapters/docker-compose.md`
+  - [x] `chapters/aws-deploy.md`
 
 ---
 

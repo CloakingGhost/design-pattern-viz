@@ -195,8 +195,8 @@ Table users {
 // 디자인 패턴 테이블
 Table pattern {
   id int [pk, increment]
-  name_en "varchar(16)" [not null]
-  name_ko "varchar(16)"
+  name_en "varchar(32)" [not null]
+  name_ko "varchar(32)"
   description "varchar(512)"
   example "varchar(512)"
 
@@ -218,7 +218,7 @@ Table pattern_statistics {
   pattern_id int [ref: > pattern.id]
   visitor_identifier "varchar(255)" [not null, note: '회원 UUID, 비회원 UUID']
   session_id "varchar(255)" [not null, note: '방문 세션 구분용']
-  action_type "varchar(15)" [not null, note: 'VIEW, PLAY, PAUSE, PREV, NEXT, RESET, COMPLETE']
+  action_type "varchar(16)" [not null, note: 'VIEW, PLAY, PAUSE, PREV, NEXT, RESET, COMPLETE']
 
   // 정밀도를 높인 타임스탬프
   created_at "timestamp(3)" [not null, default: `now()`]
@@ -237,8 +237,8 @@ Table pattern_statistics {
 // 분류 테이블
 Table classifications {
   id int [pk, increment]
-  name_en "varchar(16)" [not null]
-  name_ko "varchar(16)"
+  name_en "varchar(32)" [not null]
+  name_ko "varchar(32)"
   created_at "timestamp(0)" [not null]
   updated_at "timestamp(0)" [not null]
 
